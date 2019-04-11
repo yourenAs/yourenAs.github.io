@@ -8,20 +8,20 @@
   
     <meta name="keywords" content="YourenAs,YourenAs's Blog">
   
-  <meta name="description" content="一、分治法 &amp;emsp;&amp;emsp;一说起算法对我而言就不由的想起暴力、分治、回溯、动态规划、贪心、深度优先、广度优先等等，不过我一个都不精通。-V-!!。好了不扯了，进入正题，看标题“分治大法好”，为什么这么起嘞，是有原因的。博主今天在刷LeetCode的时候遇到了这么个题，合并K个有序链表，题号是23,我这里给了链接，有兴趣的可以去看看，我今天就来用分治的策略来分析一下这个题目。  &amp;emsp">
+  <meta name="description" content="一、分治法 &amp;emsp;&amp;emsp;一说起算法对我而言就不由的想起暴力、分治、回溯、动态规划、贪心、深度优先、广度优先等等，不过我一个都不精通。-V-!!。好了不扯了，进入正题，看标题“分治大法好”，为什么这么起嘞，是有原因的。博主今天在刷LeetCode的时候遇到了这么个题，合并K个有序链表，题号是23,我这里给了链接，有兴趣的可以去看看，我今天就来用分治的策略来分析一下这个题目。">
 <meta name="keywords" content="分治策略,层次分析,合并链表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分治大法好">
 <meta property="og:url" content="http://yoursite.com/2019/04/10/分治大法好/index.html">
 <meta property="og:site_name" content="YourenAs">
-<meta property="og:description" content="一、分治法 &amp;emsp;&amp;emsp;一说起算法对我而言就不由的想起暴力、分治、回溯、动态规划、贪心、深度优先、广度优先等等，不过我一个都不精通。-V-!!。好了不扯了，进入正题，看标题“分治大法好”，为什么这么起嘞，是有原因的。博主今天在刷LeetCode的时候遇到了这么个题，合并K个有序链表，题号是23,我这里给了链接，有兴趣的可以去看看，我今天就来用分治的策略来分析一下这个题目。  &amp;emsp">
+<meta property="og:description" content="一、分治法 &amp;emsp;&amp;emsp;一说起算法对我而言就不由的想起暴力、分治、回溯、动态规划、贪心、深度优先、广度优先等等，不过我一个都不精通。-V-!!。好了不扯了，进入正题，看标题“分治大法好”，为什么这么起嘞，是有原因的。博主今天在刷LeetCode的时候遇到了这么个题，合并K个有序链表，题号是23,我这里给了链接，有兴趣的可以去看看，我今天就来用分治的策略来分析一下这个题目。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/blog/2019.4.10.png">
 <meta property="og:image" content="http://yoursite.com/images/blog/2019.4.10.1.png">
-<meta property="og:updated_time" content="2019-04-11T05:10:36.623Z">
+<meta property="og:updated_time" content="2019-04-11T06:24:35.269Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分治大法好">
-<meta name="twitter:description" content="一、分治法 &amp;emsp;&amp;emsp;一说起算法对我而言就不由的想起暴力、分治、回溯、动态规划、贪心、深度优先、广度优先等等，不过我一个都不精通。-V-!!。好了不扯了，进入正题，看标题“分治大法好”，为什么这么起嘞，是有原因的。博主今天在刷LeetCode的时候遇到了这么个题，合并K个有序链表，题号是23,我这里给了链接，有兴趣的可以去看看，我今天就来用分治的策略来分析一下这个题目。  &amp;emsp">
+<meta name="twitter:description" content="一、分治法 &amp;emsp;&amp;emsp;一说起算法对我而言就不由的想起暴力、分治、回溯、动态规划、贪心、深度优先、广度优先等等，不过我一个都不精通。-V-!!。好了不扯了，进入正题，看标题“分治大法好”，为什么这么起嘞，是有原因的。博主今天在刷LeetCode的时候遇到了这么个题，合并K个有序链表，题号是23,我这里给了链接，有兴趣的可以去看看，我今天就来用分治的策略来分析一下这个题目。">
 <meta name="twitter:image" content="http://yoursite.com/images/blog/2019.4.10.png">
   
   
@@ -125,6 +125,13 @@
     <div class="post-title-bar">
       <ul>
           
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/分治策略/">分治策略</a>
+                  
+              </li>
+          
         <li>
           <i class="fa fa-calendar"></i>  2019-04-10
         </li>
@@ -143,8 +150,7 @@
       
             
             <h4 id="一、分治法"><a href="#一、分治法" class="headerlink" title="一、分治法"></a><strong>一、分治法</strong></h4><hr>
-<p>&emsp;&emsp;一说起算法对我而言就不由的想起暴力、分治、回溯、动态规划、贪心、深度优先、广度优先等等，不过我一个都不精通。-V-!!。好了不扯了，进入正题，看标题“分治大法好”，为什么这么起嘞，是有原因的。博主今天在刷LeetCode的时候遇到了这么个题，<a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/comments/" target="_blank" rel="noopener">合并K个有序链表</a>，题号是23,我这里给了链接，有兴趣的可以去看看，我今天就来用分治的策略来分析一下这个题目。</p>
-<p><img src="/images/blog/2019.4.10.png" alt></p>
+<p>&emsp;&emsp;一说起算法对我而言就不由的想起暴力、分治、回溯、动态规划、贪心、深度优先、广度优先等等，不过我一个都不精通。-V-!!。好了不扯了，进入正题，看标题“分治大法好”，为什么这么起嘞，是有原因的。博主今天在刷LeetCode的时候遇到了这么个题，<a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/comments/" target="_blank" rel="noopener">合并K个有序链表</a>，题号是23,我这里给了链接，有兴趣的可以去看看，我今天就来用分治的策略来分析一下这个题目。<br><a id="more"></a><br><img src="/images/blog/2019.4.10.png" alt></p>
 <p>&emsp;&emsp;接下来就来针对这个题来分析一下。从比较简单的思想来逐渐深入。</p>
 <hr>
 <h4 id="二、思路"><a href="#二、思路" class="headerlink" title="二、思路"></a><strong>二、思路</strong></h4><p>&emsp;&emsp;（1）首先以我的角度第一个想法是先将第一个链表和第二个链表合并，然后再将合并好的链表与第三个链表去合并，依次类推就可将问题解决。但是这么做弊端也很明显就是时间复杂度比较大，假设链表长度都为N，那么时间复杂度应该为O(n!)，所以并不是很好的方法。<br>&emsp;&emsp;（2）第二个就是归并的思想，也就是将第一个链表和第二个链表合并，再将第三个链表和第四个链表合并，依次类推，再将和并好的在合并就得到了最终的那个链表。这种时间复杂度相比上一个就要小一部分了。<br>如图：<br><img src="/images/blog/2019.4.10.1.png" alt></p>
@@ -155,11 +161,10 @@
 <hr>
 <h4 id="四、代码"><a href="#四、代码" class="headerlink" title="四、代码"></a><strong>四、代码</strong></h4><p>这里我用的是c++不过语言大同小异，注重思想。<br>         <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">class Solution&#123;</span><br><span class="line">public:</span><br><span class="line">	ListNode* mergeTwoLists(ListNode* l1,ListNode* l2)&#123;</span><br><span class="line">		//情况预处理以及递归结束条件</span><br><span class="line">		<span class="keyword">if</span>(l1 == NULL) <span class="built_in">return</span> l2;</span><br><span class="line">		<span class="keyword">if</span>(l2 == NULL) <span class="built_in">return</span> l1;</span><br><span class="line">		</span><br><span class="line">		//这段代码也是相当精髓的。同样的你可以看作是l1和l2都只有一个节点。</span><br><span class="line">		ListNode* head = NULL;</span><br><span class="line">		<span class="keyword">if</span>(l1-&gt;value &lt;= l2-&gt;value)</span><br><span class="line">		&#123;</span><br><span class="line">			head = l1;</span><br><span class="line">			head -&gt; next = mergeTwoLists(l1-&gt;next,l2);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			head = l2;</span><br><span class="line">			head -&gt; next = mergeTwoLists(l1,l2-&gt;next);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> head;</span><br><span class="line">	&#125;</span><br><span class="line">	ListNode* mergeKLists(vector&lt;ListNode*&gt;&amp; lists)&#123;</span><br><span class="line">		//情况预处理以及递归结束条件，基本每道题一开始都要考虑这个的。</span><br><span class="line">		<span class="keyword">if</span>(lists.size()==0) <span class="built_in">return</span> NULL;</span><br><span class="line">		<span class="keyword">if</span>(lists.size()==1) <span class="built_in">return</span> lists[0];</span><br><span class="line">		<span class="keyword">if</span>(lists.size()==2) <span class="built_in">return</span>  mergeTwoLists(lists[0],lists[1]);</span><br><span class="line">		</span><br><span class="line">		//一分为二</span><br><span class="line">		int mid = lists.size()/2;</span><br><span class="line">		vector&lt;ListNode*&gt; l1(mid);</span><br><span class="line">		vector&lt;ListNode*&gt; l2(lists.size()-mid);</span><br><span class="line">		<span class="keyword">for</span>(int i=0;i&lt;mid;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			l1[i] = lists[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(int j=mid;j&lt;lists.size();j++)</span><br><span class="line">		&#123;</span><br><span class="line">			l2[j-mid] = lists[j];</span><br><span class="line">		&#125;</span><br><span class="line">		//这句算是整篇代码的精髓之体现了，递归千万不能深度分析，应该层次分析，就会很好理解。</span><br><span class="line">		//假设 K等2  实质上这句就是合并两个链表 l1,l2。</span><br><span class="line">		<span class="built_in">return</span> mergeTwoLists(mergeKLists(l1),mergeKLists(l2));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a><strong>五、总结</strong></h4><p>&emsp;&emsp;我觉得看到到这里大家应该就会明白我为什么要起这么个标题了，将实在的但我看到这种解法的时候真的惊到了，应为即使你有第二种思路但想将它用代码完整的翻译出来实质上是有一定难度的，少不免要出点小bug，但是加入分治思想后整体代码逻辑真的是非常清晰了，这段代码真的可以说是优美了，没有一点拖泥带水。而且难能可贵的是这道题目也是与分治异常的契合，将分治的思想可谓是发挥到了极致。当然这都是我的愚见。虽然效率上并不及第三种处理方法，不过我认为整体上堪称完美。可能是我阅历还太浅，但是这段代码真的有震撼到我。好了今天的分享就到这了。这也算是我真正意义上的第一篇博客了，希望大家喜欢。</p>
-<a id="more"></a>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年04月11日 13:10</p>
+        <p>最后更新： 2019年04月11日 14:24</p>
         <p>原始链接： <a class="post-url" href="/2019/04/10/分治大法好/" title="分治大法好">http://yoursite.com/2019/04/10/分治大法好/</a></p>
         <footer>
             <a href="http://yoursite.com">
@@ -362,7 +367,7 @@
 <div class="sidebar-menu-box" id="sidebar-menu-box">
     <div class="sidebar-menu-box-container">
         <div id="sidebar-menu-box-categories">
-            <a class="category-link" href="/categories/First/">First</a>
+            <a class="category-link" href="/categories/First/">First</a><a class="category-link" href="/categories/分治策略/">分治策略</a>
         </div>
         <div id="sidebar-menu-box-tags">
             <a href="/tags/First/" style="font-size: 10px;">First</a> <a href="/tags/Second/" style="font-size: 10px;">Second</a> <a href="/tags/分治策略/" style="font-size: 10px;">分治策略</a> <a href="/tags/合并链表/" style="font-size: 10px;">合并链表</a> <a href="/tags/层次分析/" style="font-size: 10px;">层次分析</a>
