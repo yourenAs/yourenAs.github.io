@@ -3,23 +3,23 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Hello World | YourenAs</title>
+  <title>项目问题记录 | YourenAs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="YourenAs,YourenAs's Blog">
   
-  <meta name="description" content="MinHow-This is a summary">
-<meta name="keywords" content="First,Second">
+  <meta name="description" content="&amp;emsp;&amp;emsp;最近在做一个小项目算是模拟了FTP文件传输的过程，在这中间遇到了一些问题，今天就来总结一下这些问题顺便提下解决的办法。">
+<meta name="keywords" content="文件传输,问题解决">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/06/18/我的第一篇博客文章/index.html">
+<meta property="og:title" content="项目问题记录">
+<meta property="og:url" content="http://yoursite.com/2019/04/15/关于迷你百度云项目问题解决/index.html">
 <meta property="og:site_name" content="YourenAs">
-<meta property="og:description" content="MinHow-This is a summary">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;最近在做一个小项目算是模拟了FTP文件传输的过程，在这中间遇到了一些问题，今天就来总结一下这些问题顺便提下解决的办法。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-10T06:15:51.589Z">
+<meta property="og:updated_time" content="2019-04-16T01:56:04.379Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="MinHow-This is a summary">
+<meta name="twitter:title" content="项目问题记录">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;最近在做一个小项目算是模拟了FTP文件传输的过程，在这中间遇到了一些问题，今天就来总结一下这些问题顺便提下解决的办法。">
   
   
     <link rel="icon" href="/images/favicon.png">
@@ -110,14 +110,14 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-我的第一篇博客文章" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-关于迷你百度云项目问题解决" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      Hello World
+      项目问题记录
     </h1>
     <div class="post-title-bar">
       <ul>
@@ -125,12 +125,12 @@
               <li>
                   <i class="fa fa-book"></i>
                   
-                      <a href="/categories/First/">First</a>
+                      <a href="/categories/项目/">项目</a>
                   
               </li>
           
         <li>
-          <i class="fa fa-calendar"></i>  2017-06-18
+          <i class="fa fa-calendar"></i>  2019-04-15
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -146,12 +146,25 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p> MinHow-This is a summary<br><a id="more"></a></p>
+            <p>&emsp;&emsp;最近在做一个小项目算是模拟了FTP文件传输的过程，在这中间遇到了一些问题，今天就来总结一下这些问题顺便提下解决的办法。</p>
+<a id="more"></a>
+<hr>
+<h4 id="一、问题"><a href="#一、问题" class="headerlink" title="一、问题"></a><strong>一、问题</strong></h4><hr>
+<p>&emsp;&emsp;（1）客户端在与服务器建立连接后且在传输过程中，若客户端中止后服务器挂掉。<br>&emsp;&emsp;（2）文件在传输到一半中止后，再次传输，如何传输（即断点续传问题）。<br>&emsp;&emsp;（3）如何实现类似百度云的秒传功能。<br>&emsp;&emsp;（4）在实现并发后，若有成千上万个用户同时下载同一个文件时，如何处理。</p>
+<hr>
+<h4 id="二、问题分析"><a href="#二、问题分析" class="headerlink" title="二、问题分析"></a><strong>二、问题分析</strong></h4><hr>
+<p>&emsp;&emsp;第一个问题：<br>&emsp;&emsp;首先，为什么在文件传输到一半的时候关掉客户端服务器会挂掉，终归原因是在于我在设计的时候是单方面一直发送，另一方面一直接受，若是两端都正常倒也没什么问题，但若某接受方突然挂掉那么就会导致发送方一直在<code>send()</code>所以进而就导致发送方也挂掉了。<br>&emsp;&emsp;第二个问题：<br>&emsp;&emsp;断点续传如何解决，断点续传的问题本质在于再次启动时并不知道上次文件传输到的位置，以及那个文件是不完整文件。解决这两个问题断点续传也就解决了。<br>&emsp;&emsp;第三个问题：<br>&emsp;&emsp;要解决第三个问题，就必须了解真正的秒传是怎样实现的，也就是并非真实的去上传，而是服务器端在已有资源的前提下为你提供了一个访问该资源的新接口，看似秒传，实则没传。<br>&emsp;&emsp;第四个问题：<br>&emsp;&emsp;很显然，若是访问量一旦飙升特别是对于同一文件，若是并发对其读取且发送是没法实现的。问题本质在于，如何解决多用户同时对于磁盘的某一区域的同时访问。</p>
+<hr>
+<h4 id="三、解决问题"><a href="#三、解决问题" class="headerlink" title="三、解决问题"></a><strong>三、解决问题</strong></h4><p>&emsp;&emsp;（1）原因分析出来后解决就容易多了，既然是因为发送端不知道接受端挂掉而导致的，那么解决办法也是不唯一的。</p>
+<p>&emsp;&emsp;&emsp;①最简单的解决办法就是接受一波数据就像发送端回复一声，倘若挂掉自然会给发送端的<code>recv()</code>返回值必然是<code>0</code>，这样就可以解决这个问题了。<br>&emsp;&emsp;&emsp;②稍微复杂一点，效率要比上一种好，就是使用IO复用，一直去监听套接字上的读写事件，因为发送端的写事件是一直是就绪的，所以可以一直发送，但只要接到读事件必然是接受端挂掉或者是其他异常操作导致的。</p>
+<p>&emsp;&emsp;（2）解决这个问题方法也不唯一，不过在这里我就只提一种解决方案。<br>&emsp;&emsp;&emsp;那就是通过类似操作系统上对于一个打开文件的处理，也就是会去产生一个中间文件。借由这种思路可以在一开始文件传输时，接收方在创建该文件时给其增添后缀标识其为一个未传输完的文件。例如:<code>a.c.tmp</code>运用<code>.tmp</code>去标识，传输完成后再去掉后缀名就ok了。如是挂掉重启，就去找带有<code>.tmp</code>后缀的文件将其文件大小发送给发送方，便可继续正常接受了。</p>
+<p>&emsp;&emsp;（3）解决秒传我这目前只有一个思路，就是通过MD5将服务器上所有资源都处理一遍，形成一种Key_Value的映射关系，若是上传的Key值可以查到，则给用户提供一个软连接，可以让其访问，便解决了秒传这个问题。当然这并非完全解决，若是用户是以只读的方式使用该资源倒还罢了，若是要修改资源那便要加入写时拷贝的操作了。</p>
+<p>&emsp;&emsp;（4）针对于第四个问题，目前也只有一个思路，就是类似内存池的处理一样。一次性拿到操作系统相应资源，由用户去控制分配。同样适用于这里的问题。之后有时间我再详细的写一篇博客，针对于这最后这一个问题，这里就提一下。</p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年04月10日 14:15</p>
-        <p>原始链接： <a class="post-url" href="/2017/06/18/我的第一篇博客文章/" title="Hello World">http://yoursite.com/2017/06/18/我的第一篇博客文章/</a></p>
+        <p>最后更新： 2019年04月16日 09:56</p>
+        <p>原始链接： <a class="post-url" href="/2019/04/15/关于迷你百度云项目问题解决/" title="项目问题记录">http://yoursite.com/2019/04/15/关于迷你百度云项目问题解决/</a></p>
         <footer>
             <a href="http://yoursite.com">
                 <img src="/images/logo.png" alt="YourenAs">
@@ -208,7 +221,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/06/18/我的第一篇博客文章/&title=《Hello World》 — YourenAs&pic=http://yoursite.comimages/logo.png" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/04/15/关于迷你百度云项目问题解决/&title=《项目问题记录》 — YourenAs&pic=http://yoursite.comimages/logo.png" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -218,22 +231,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/06/18/我的第一篇博客文章/&title=《Hello World》 — YourenAs&source= MinHow-This is a summary" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/04/15/关于迷你百度云项目问题解决/&title=《项目问题记录》 — YourenAs&source=&emsp;&emsp;最近在做一个小项目算是模拟了FTP文件传输的过程，在这中间遇到了一些问题，今天就来总结一下这些问题顺便提下解决的办法。" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/06/18/我的第一篇博客文章/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/04/15/关于迷你百度云项目问题解决/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hello World》 — YourenAs&url=http://yoursite.com/2017/06/18/我的第一篇博客文章/&via=http://yoursite.com" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《项目问题记录》 — YourenAs&url=http://yoursite.com/2019/04/15/关于迷你百度云项目问题解决/&via=http://yoursite.com" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/06/18/我的第一篇博客文章/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/04/15/关于迷你百度云项目问题解决/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -243,7 +256,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2017/06/18/我的第一篇博客文章/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/04/15/关于迷你百度云项目问题解决/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -255,9 +268,9 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/First/" class="color1">First</a>
+    <a href="/tags/文件传输/" class="color5">文件传输</a>
       
-    <a href="/tags/Second/" class="color2">Second</a>
+    <a href="/tags/问题解决/" class="color5">问题解决</a>
       
   </li>
 
@@ -268,26 +281,27 @@
 </article>
 
 
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一、问题"><span class="post-toc-text">一、问题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#二、问题分析"><span class="post-toc-text">二、问题分析</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#三、解决问题"><span class="post-toc-text">三、解决问题</span></a></li></ol>
+        </nav>
+    </aside>
+    
 
 <nav id="article-nav">
   
-    <a href="/2019/04/08/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          Hello World
-        
-      </span>
-    </a>
   
+    <a href="/2019/04/13/总结，目标/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">总结，目标</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
   
 </nav>
 
 
 
     
-        <div id="SOHUCS" sid="我的第一篇博客文章"></div>
+        <div id="SOHUCS" sid="关于迷你百度云项目问题解决"></div>
 <script type="text/javascript">
     (function(){
         var appid = 'true';
